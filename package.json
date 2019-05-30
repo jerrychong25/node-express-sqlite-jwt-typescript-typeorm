@@ -26,6 +26,9 @@
       "typeorm": "0.2.17"
    },
    "scripts": {
-      "start": "ts-node src/index.ts"
-   }
+      "tsc": "tsc",
+      "start": "set debug=* && ts-node-dev --respawn --transpileOnly ./src/index.ts",
+      "prod": "tsc && node ./build/app.js",
+      "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run"
+    }
 }
