@@ -1,4 +1,4 @@
-# Awesome Project Build with TypeORM
+# Node Express SQLite JWT TypeScript with TypeORM
 
 Steps to run this project:
 
