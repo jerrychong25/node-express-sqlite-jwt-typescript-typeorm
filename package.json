@@ -31,5 +31,5 @@
       "prod": "tsc && node ./build/app.js",
       "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run",
       "migration:revert": "ts-node ./node_modules/typeorm/cli.js migration:revert"
-    }
+   }
 }

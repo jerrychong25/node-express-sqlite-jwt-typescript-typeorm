@@ -10,7 +10,7 @@ static listAll = async (req: Request, res: Response) => {
   //Get users from database
   const userRepository = getRepository(User);
   const users = await userRepository.find({
-    select: ["id", "username", "role"] //We dont want to send the passwords on response
+    select: ["id", "name", "role"] //We dont want to send the passwords on response
   });
 
   //Send the users object
@@ -25,7 +25,7 @@ static getOneById = async (req: Request, res: Response) => {
   const userRepository = getRepository(User);
   try {
     const user = await userRepository.findOneOrFail(id, {
-      select: ["id", "username", "role"] //We dont want to send the password on response
+      select: ["id", "name", "role"] //We dont want to send the password on response
     });
   } catch (error) {
     res.status(404).send("User not found");
@@ -34,11 +34,14 @@ static getOneById = async (req: Request, res: Response) => {
 
 static newUser = async (req: Request, res: Response) => {
   //Get parameters from the body
-  let { username, password, role } = req.body;
+  let { name, email, password, role, register_timestamp, login_timestamp } = req.body;
   let user = new User();
-  user.username = username;
+  user.name = name;
+  user.email = email;
   user.password = password;
   user.role = role;
+  user.register_timestamp = register_timestamp;
+  user.login_timestamp = login_timestamp;
 
   //Validade if the parameters are ok
   const errors = await validate(user);
@@ -68,7 +71,7 @@ static editUser = async (req: Request, res: Response) => {
   const id = req.params.id;
 
   //Get values from the body
-  const { username, role } = req.body;
+  const { name, role } = req.body;
 
   //Try to find user on database
   const userRepository = getRepository(User);
@@ -82,7 +85,7 @@ static editUser = async (req: Request, res: Response) => {
   }
 
   //Validate the new values on model
-  user.username = username;
+  user.name = name;
   user.role = role;
   const errors = await validate(user);
   if (errors.length > 0) {
