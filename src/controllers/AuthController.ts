@@ -68,13 +68,13 @@ class AuthController {
       res.status(401).send();
     }
 
-    // Check if old password matchs
+    // Check if old password matches
     if (!user.checkIfUnencryptedPasswordIsValid(oldPassword)) {
       res.status(401).send();
       return;
     }
 
-    // Validate de model (password lenght)
+    // Validate the model (Password length)
     user.password = newPassword;
     const errors = await validate(user);
     if (errors.length > 0) {
