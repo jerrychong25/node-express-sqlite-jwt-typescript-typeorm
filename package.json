@@ -22,7 +22,7 @@
       "jsonwebtoken": "^9.0.0",
       "reflect-metadata": "^0.1.10",
       "sqlite3": "^4.0.3",
-      "ts-node-dev": "^1.0.0-pre.39",
+      "ts-node-dev": "^1.1.8",
       "typeorm": "0.2.25"
    },
    "scripts": {
