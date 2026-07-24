@@ -23,7 +23,7 @@
       "reflect-metadata": "^0.1.10",
       "sqlite3": "^6.0.1",
       "ts-node-dev": "^1.1.8",
-      "typeorm": "1.0.0"
+      "typeorm": "1.1.0"
    },
    "scripts": {
       "tsc": "tsc",
